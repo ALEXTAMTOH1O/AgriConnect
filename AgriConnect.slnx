@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AgriConnect/AgriConnect.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
