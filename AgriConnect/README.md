@@ -1,3 +1,6 @@
+
+Mon projet et son architecture se trouve sur la branche 'agri-connect'
+
 # AgriConnect
 
 Application .NET MAUI (net10) multiplateforme — Android, iOS, Mac Catalyst et Windows. Ce dépôt contient l'application mobile/desktop AgriConnect et la configuration de base du projet.
@@ -44,4 +47,4 @@ d. Ouvrir une Pull Request vers `main`, faire la revue et merger.
 e. Sur `main`, taguer la release :git checkout main git pull origin main git tag -a vX.Y.Z -m "Release vX.Y.Z" git push origin vX.Y.Z
 f. Créer la Release GitHub (interface web ou CLI) : gh release create vX.Y.Z --title "vX.Y.Z" --notes "Notes de release..." 
 	
-	bonjour
+	
