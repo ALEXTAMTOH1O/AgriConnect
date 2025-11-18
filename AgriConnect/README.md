@@ -42,4 +42,5 @@ b. Mettre à jour les versions dans `AgriConnect.csproj` :
 c. Commit et push :git add AgriConnect.csproj git commit -m "chore(release): vX.Y.Z" git push origin release/vX.Y.Z
 d. Ouvrir une Pull Request vers `main`, faire la revue et merger.
 e. Sur `main`, taguer la release :git checkout main git pull origin main git tag -a vX.Y.Z -m "Release vX.Y.Z" git push origin vX.Y.Z
-f. Créer la Release GitHub (interface web ou CLI) : gh release create vX.Y.Z --title "vX.Y.Z" --notes "Notes de release..."
+f. Créer la Release GitHub (interface web ou CLI) : gh release create vX.Y.Z --title "vX.Y.Z" --notes "Notes de release..." 
+	
