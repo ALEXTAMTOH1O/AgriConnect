@@ -2,23 +2,25 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private async void OnLoginClicked(object sender, EventArgs e)
         {
-            count++;
+            // Données en dur : exemple d'utilisateur
+            var demoUser = new { Name = "Utilisateur Test", Email = "test@example.com" };
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+            await DisplayAlert("Connexion", $"Bienvenue, {demoUser.Name}!\nEmail: {demoUser.Email}", "OK");
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            // Naviguer vers une autre page si nécessaire (non implémentée)
+        }
+
+        private async void OnGoogleClicked(object sender, EventArgs e)
+        {
+            // Pas d'auth réelle: afficher un message indiquant que ceci est une simulation
+            await DisplayAlert("Google", "Connexion via Google (simulation). Aucune authentification réelle disponible.", "OK");
         }
     }
 }
