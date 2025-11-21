@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgriConnect.RoleSelectionPage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,40" Spacing="24">
+
+            <Label Text="QUI ÊTES-VOUS ?"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#0B0B0B" />
+
+            <Label Text="voulez-vous vendre ou acheter des produits frais ?"
+                   FontSize="14"
+                   TextColor="#333333" />
+
+            <!-- Agriculteur (Frame cliquable) -->
+            <Frame BackgroundColor="#0B7A2D"
+                   CornerRadius="6"
+                   HasShadow="False"
+                   Padding="12"
+                   HeightRequest="100">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAgriculteurTapped" NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame WidthRequest="36" HeightRequest="36" CornerRadius="18" BackgroundColor="#17A66A" VerticalOptions="Center" HorizontalOptions="Center" />
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                        <Label Text="Agriculteur" TextColor="White" FontAttributes="Bold" />
+                        <Label Text="je vends mes produits" TextColor="White" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Acheteur (Frame cliquable) -->
+            <Frame BackgroundColor="#E6E6E6"
+                   CornerRadius="6"
+                   HasShadow="False"
+                   Padding="12"
+                   HeightRequest="100">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAcheteurTapped" NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame WidthRequest="36" HeightRequest="36" CornerRadius="6" BackgroundColor="#17A66A" VerticalOptions="Center" HorizontalOptions="Center" />
+
+                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                        <Label Text="Acheteur" TextColor="#0B0B0B" FontAttributes="Bold" />
+                        <Label Text="j'achète des produits locaux" TextColor="#0B0B0B" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

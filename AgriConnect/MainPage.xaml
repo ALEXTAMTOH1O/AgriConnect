@@ -59,6 +59,7 @@
 
                     <Label Text="connecter avec Google" VerticalOptions="Center" TextColor="#2B2B2B" />
 
+                    <!-- bouton invisible par-dessus pour gérer le clic -->
                     <Button
                         x:Name="GoogleBtnOverlay"
                         BackgroundColor="Transparent"

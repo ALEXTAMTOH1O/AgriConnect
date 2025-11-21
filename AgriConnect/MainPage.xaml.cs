@@ -9,12 +9,11 @@
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            // Données en dur : exemple d'utilisateur
+            // Simulation de connexion en dur
             var demoUser = new { Name = "Utilisateur Test", Email = "test@example.com" };
 
-            await DisplayAlert("Connexion", $"Bienvenue, {demoUser.Name}!\nEmail: {demoUser.Email}", "OK");
-
-            // Naviguer vers une autre page si nécessaire (non implémentée)
+            // Naviguer vers la page de sélection de rôle
+            await Shell.Current.GoToAsync("roleselection");
         }
 
         private async void OnGoogleClicked(object sender, EventArgs e)
