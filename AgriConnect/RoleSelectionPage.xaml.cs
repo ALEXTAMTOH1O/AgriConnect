@@ -1,3 +1,6 @@
+using Microsoft.Maui.Controls;
+using System;
+
 namespace AgriConnect
 {
     public partial class RoleSelectionPage : ContentPage
@@ -9,12 +12,12 @@ namespace AgriConnect
 
         private async void OnAgriculteurTapped(object sender, EventArgs e)
         {
-            await DisplayAlert("Rôle sélectionné", "Vous avez choisi: Agriculteur", "OK");
+            await Shell.Current.GoToAsync(nameof(LoginPage));
         }
 
         private async void OnAcheteurTapped(object sender, EventArgs e)
         {
-            await DisplayAlert("Rôle sélectionné", "Vous avez choisi: Acheteur", "OK");
+            await Shell.Current.GoToAsync(nameof(LoginPage));
         }
     }
 }

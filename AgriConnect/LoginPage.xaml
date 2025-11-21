@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgriConnect.LoginPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <!-- Background Image (Touched) -->
+        <Image Source="background.jpg"
+               Aspect="AspectFill"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" />
+
+        <!-- Back Button -->
+        <ImageButton Source="back_icon.png"
+                     BackgroundColor="Transparent"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="20,40,0,0"
+                     HeightRequest="40"
+                     WidthRequest="40"
+                     Clicked="OnBackClicked">
+            <ImageButton.Source>
+                <FontImageSource Glyph="&#x2190;" Color="White" Size="30" />
+            </ImageButton.Source>
+        </ImageButton>
+
+        <!-- Overlay for readability (optional, but good for text on images) -->
+        <!-- <BoxView Color="#40000000"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand" /> -->
+
+        <ScrollView>
+            <VerticalStackLayout Spacing="20"
+                                 Padding="30"
+                                 VerticalOptions="Center">
+
+                <!-- Welcome Text -->
+                <Label Text="Bienvenue sur AgriConnect"
+                       TextColor="#32CD32"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center" />
+
+                <Label Text="Connectez-vous au marché agricole local"
+                       TextColor="#333333"
+                       FontSize="14"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,0,0,30"/>
+
+                <!-- Form Fields -->
+                <Entry x:Name="NameEntry"
+                       Placeholder="Entrez votre nom"
+                       PlaceholderColor="Black"
+                       TextColor="Black"
+                       BackgroundColor="#D3D3D3"
+                       HeightRequest="50" />
+
+                <Entry x:Name="EmailEntry"
+                       Placeholder="Entrez votre Email"
+                       PlaceholderColor="Black"
+                       TextColor="Black"
+                       BackgroundColor="#D3D3D3"
+                       Keyboard="Email"
+                       HeightRequest="50" />
+
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Entrez votre mot de passe"
+                       PlaceholderColor="Black"
+                       TextColor="Black"
+                       IsPassword="True"
+                       BackgroundColor="#D3D3D3"
+                       HeightRequest="50" />
+
+                <!-- Forgot Password -->
+                <Label Text="mot de passe oublié?"
+                       TextColor="Red"
+                       FontSize="12"
+                       HorizontalOptions="Center"
+                       TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnForgotPasswordTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- Login Button -->
+                <Button Text="Se connecter"
+                        BackgroundColor="#00FF40"
+                        TextColor="Black"
+                        CornerRadius="0"
+                        HeightRequest="50"
+                        Clicked="OnLoginClicked"
+                        Margin="0,20,0,0"/>
+
+                <!-- Google Login (Mock) -->
+                <Button Text="connecter avec Google"
+                        BackgroundColor="#C0C0C0"
+                        TextColor="Black"
+                        CornerRadius="0"
+                        HeightRequest="50"
+                        ImageSource="google_icon.png" 
+                        ContentLayout="Left,10"
+                        Margin="0,20,0,0"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

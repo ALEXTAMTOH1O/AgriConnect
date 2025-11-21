@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:Converters="clr-namespace:AgriConnect.Converters"
+             x:Class="AgriConnect.ProductsPage"
+             Title="Produits"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" BackgroundColor="White" HeightRequest="60" Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            
+            <ImageButton Source="menu_icon.png"
+                         BackgroundColor="Transparent"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         Clicked="OnMenuClicked"
+                         VerticalOptions="Center">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="&#x2630;" Color="#00C853" Size="30" />
+                </ImageButton.Source>
+            </ImageButton>
+
+            <Label Grid.Column="1" 
+                   Text="ACHETEUR" 
+                   TextColor="#00C853" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+                   
+            <ImageButton Grid.Column="2" Source="notification_icon.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center">
+                 <ImageButton.Source>
+                    <FontImageSource Glyph="&#x1F514;" Color="#00C853" Size="24" />
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+
+        <!-- Search Bar -->
+        <Grid Grid.Row="1" Padding="20,0,20,10">
+            <Frame CornerRadius="20" 
+                   HeightRequest="50" 
+                   Padding="10,0" 
+                   HasShadow="False" 
+                   BorderColor="#E0E0E0"
+                   BackgroundColor="#F5F5F5">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Image Source="search_icon.png" 
+                           HeightRequest="20" 
+                           WidthRequest="20" 
+                           VerticalOptions="Center"
+                           Margin="0,0,10,0">
+                        <Image.Source>
+                            <FontImageSource Glyph="&#x1F50D;" Color="#00C853" Size="20" />
+                        </Image.Source>
+                    </Image>
+                    <Entry Grid.Column="1"
+                           Placeholder="Rechercher"
+                           PlaceholderColor="Gray"
+                           TextColor="Black"
+                           VerticalOptions="Center"
+                           TextChanged="OnSearchTextChanged"/>
+                </Grid>
+            </Frame>
+        </Grid>
+
+        <!-- Product List -->
+        <CollectionView Grid.Row="2" 
+                        ItemsSource="{Binding FilteredProducts}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged"
+                        Margin="20">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="15" 
+                           Padding="0" 
+                           HasShadow="True" 
+                           BorderColor="Transparent"
+                           BackgroundColor="White"
+                           HeightRequest="200">
+                        <Grid RowDefinitions="*,Auto">
+                            <Image Grid.Row="0" 
+                                   Source="{Binding Image}" 
+                                   Aspect="AspectFill"
+                                   HeightRequest="120"
+                                   VerticalOptions="Start" />
+                            
+                            <VerticalStackLayout Grid.Row="1" Padding="10" Spacing="5">
+                                <Label Text="{Binding Name}" 
+                                       FontSize="14" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Black" />
+                                <Label Text="{Binding Price}" 
+                                       FontSize="14" 
+                                       TextColor="#00C853" 
+                                       FontAttributes="Bold" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Bottom Navigation -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" HeightRequest="60" BackgroundColor="White">
+            <BoxView Grid.ColumnSpan="4" HeightRequest="1" Color="#E0E0E0" VerticalOptions="Start" />
+            
+            <ImageButton Grid.Column="0" Source="home_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Clicked="OnHomeClicked">
+                 <ImageButton.Source>
+                    <FontImageSource Glyph="&#x1F3E0;" Color="#00C853" Size="24" />
+                </ImageButton.Source>
+            </ImageButton>
+            
+            <ImageButton Grid.Column="1" Source="chat_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Clicked="OnChatClicked">
+                 <ImageButton.Source>
+                    <FontImageSource Glyph="&#x1F4AC;" Color="#00C853" Size="24" />
+                </ImageButton.Source>
+            </ImageButton>
+            
+            <Grid Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Clicked="OnCartClicked">
+                     <ImageButton.Source>
+                        <FontImageSource Glyph="&#x1F6D2;" Color="#00C853" Size="24" />
+                    </ImageButton.Source>
+                </ImageButton>
+                <Frame CornerRadius="10"
+                       HeightRequest="20"
+                       WidthRequest="20"
+                       Padding="0"
+                       BackgroundColor="Red"
+                       HorizontalOptions="End"
+                       VerticalOptions="Start"
+                       Margin="10,-5,-5,0"
+                       IsVisible="{Binding CartItemCount, Converter={StaticResource IntToBoolConverter}}">
+                    <Label Text="{Binding CartItemCount}"
+                           TextColor="White"
+                           FontSize="10"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
+            </Grid>
+
+            <ImageButton Grid.Column="3" Source="profile_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center">
+                 <ImageButton.Source>
+                    <FontImageSource Glyph="&#x1F464;" Color="#00C853" Size="24" />
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+
+    </Grid>
+</ContentPage>

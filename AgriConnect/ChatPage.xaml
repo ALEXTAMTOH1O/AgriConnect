@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgriConnect.ChatPage"
+             Title="{Binding SellerName}"
+             BackgroundColor="#F5F5F5">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        
+        <!-- Header -->
+        <Grid Grid.Row="0" BackgroundColor="#00C853" Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="back_icon.png"
+                         BackgroundColor="Transparent"
+                         HeightRequest="40"
+                         WidthRequest="40"
+                         Clicked="OnBackClicked"
+                         VerticalOptions="Center">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="&#x2190;" Color="White" Size="24" />
+                </ImageButton.Source>
+            </ImageButton>
+            <Label Grid.Column="1"
+                   Text="{Binding SellerName}"
+                   TextColor="White"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   Margin="10,0,0,0"/>
+        </Grid>
+
+        <!-- Chat Messages -->
+        <ScrollView Grid.Row="1" Padding="10">
+            <VerticalStackLayout Spacing="10" BindableLayout.ItemsSource="{Binding Messages}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{Binding BackgroundColor}"
+                               CornerRadius="10"
+                               Padding="10"
+                               HorizontalOptions="{Binding Alignment}"
+                               HasShadow="False">
+                            <Label Text="{Binding Text}"
+                                   TextColor="{Binding TextColor}"
+                                   FontSize="14"/>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Input Area -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto" Padding="10" BackgroundColor="White">
+            <Entry Placeholder="Écrire un message..."
+                   Text="{Binding NewMessageText}"
+                   BackgroundColor="#F0F0F0"
+                   TextColor="Black"
+                   PlaceholderColor="Gray"
+                   Margin="0,0,10,0"/>
+            <ImageButton Grid.Column="1"
+                         BackgroundColor="#00C853"
+                         CornerRadius="25"
+                         HeightRequest="50"
+                         WidthRequest="50"
+                         Clicked="OnSendClicked">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="&#x27A4;" Color="White" Size="24" />
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+    </Grid>
+</ContentPage>
