@@ -4,19 +4,28 @@ using System;
 namespace AgriConnect
 {
     public partial class RoleSelectionPage : ContentPage
+using Microsoft.Maui.Controls;
+using System;
+using Microsoft.Maui.Storage; // Added for Preferences
+
+namespace AgriConnect
+{
+    public partial class RoleSelectionPage : ContentPage
     {
         public RoleSelectionPage()
         {
             InitializeComponent();
         }
 
-        private async void OnAgriculteurTapped(object sender, EventArgs e)
+        private async void OnBuyerClicked(object sender, EventArgs e)
         {
+            Preferences.Set("UserRole", "Buyer");
             await Shell.Current.GoToAsync(nameof(LoginPage));
         }
 
-        private async void OnAcheteurTapped(object sender, EventArgs e)
+        private async void OnFarmerClicked(object sender, EventArgs e)
         {
+            Preferences.Set("UserRole", "Farmer");
             await Shell.Current.GoToAsync(nameof(LoginPage));
         }
     }

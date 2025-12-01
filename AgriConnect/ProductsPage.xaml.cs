@@ -54,6 +54,56 @@ public partial class ProductsPage : ContentPage
                 Quantity = "500 kg",
                 SellerName = "PAUL",
                 SellerLocation = "BAFOUSSAM"
+            },
+            new Product 
+            { 
+                Name = "Cacao en vrac", 
+                Price = "1500F/KG", 
+                Image = "cocoa_farm.jpg",
+                Description = "Fèves de cacao fraîches, récoltées directement de la ferme. Idéal pour la transformation ou l'exportation.",
+                Quantity = "1000 kg",
+                SellerName = "PIERRE",
+                SellerLocation = "EBOLOWA"
+            },
+            new Product 
+            { 
+                Name = "Chocolat Artisanal", 
+                Price = "5000F/Tab", 
+                Image = "cocoa_beans.jpg",
+                Description = "Chocolat noir artisanal fait à partir de nos meilleures fèves. Vendu avec un échantillon de fèves séchées.",
+                Quantity = "50 unités",
+                SellerName = "SOPHIE",
+                SellerLocation = "KRIBI"
+            },
+            new Product 
+            { 
+                Name = "Café Vital Moulu", 
+                Price = "2500F/Paq", 
+                Image = "coffee_vital.jpg",
+                Description = "Café moulu pur Arabica du Cameroun. Arôme riche et goût intense. Paquet de 500g.",
+                Quantity = "200 paquets",
+                SellerName = "COOPÉRATIVE OKU",
+                SellerLocation = "BAMENDA"
+            },
+            new Product 
+            { 
+                Name = "Riz de Ndop", 
+                Price = "450F/KG", 
+                Image = "rice_grains.jpg",
+                Description = "Riz local de Ndop, grains longs et parfumés. Nettoyé et prêt à cuire.",
+                Quantity = "5000 kg",
+                SellerName = "AHMADOU",
+                SellerLocation = "NDOP"
+            },
+            new Product 
+            { 
+                Name = "Oignons Rouges", 
+                Price = "600F/KG", 
+                Image = "onions.png",
+                Description = "Oignons rouges fermes et savoureux, parfaits pour la cuisine quotidienne. Conservation longue durée.",
+                Quantity = "300 kg",
+                SellerName = "FATIMATOU",
+                SellerLocation = "MAROUA"
             }
         };
 
@@ -93,18 +143,15 @@ public partial class ProductsPage : ContentPage
         }
     }
 
-    private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void OnProductTapped(object sender, TappedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is Product selectedProduct)
+        if (e.Parameter is Product selectedProduct)
         {
             var navigationParameter = new Dictionary<string, object>
             {
-                { "SelectedProduct", selectedProduct }
+                { "Product", selectedProduct }
             };
             await Shell.Current.GoToAsync(nameof(ProductDetailsPage), navigationParameter);
-            
-            // Deselect item
-            ((CollectionView)sender).SelectedItem = null;
         }
     }
 
@@ -130,6 +177,11 @@ public partial class ProductsPage : ContentPage
     private async void OnCartClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(CartPage));
+    }
+
+    private async void OnProfileClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(ProfilePage));
     }
 }
 

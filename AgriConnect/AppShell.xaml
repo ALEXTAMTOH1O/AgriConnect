@@ -7,8 +7,18 @@
     Title="AgriConnect">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="RoleSelection"
+        ContentTemplate="{DataTemplate local:RoleSelectionPage}"
+        Route="RoleSelectionPage" />
+
+    <ShellContent
+        Title="Products"
+        ContentTemplate="{DataTemplate local:ProductsPage}"
+        Route="ProductsPage" />
+
+    <ShellContent
+        Title="FarmerDashboard"
+        ContentTemplate="{DataTemplate local:FarmerDashboardPage}"
+        Route="FarmerDashboardPage" />
 
 </Shell>

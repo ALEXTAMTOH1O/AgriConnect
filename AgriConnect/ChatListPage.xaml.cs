@@ -46,6 +46,11 @@ public partial class ChatListPage : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(CartPage));
     }
+
+    private async void OnProfileClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(ProfilePage));
+    }
 }
 
 public class Conversation

@@ -35,20 +35,6 @@ public partial class LoginPage : ContentPage
         if (string.IsNullOrWhiteSpace(password))
         {
             await DisplayAlert("Erreur", "Veuillez entrer votre mot de passe.", "OK");
-            return;
-        }
-
-        // Mock Authentication Success
-        // await DisplayAlert("Succès", $"Bienvenue, {name}!", "OK");
-        
-        // Navigate to Products Page
-        await Shell.Current.GoToAsync(nameof(ProductsPage)); 
-    }
-
-    private async void OnForgotPasswordTapped(object sender, TappedEventArgs e)
-    {
-        await DisplayAlert("Info", "Fonctionnalité de récupération de mot de passe à venir.", "OK");
-    }
 
     private bool IsValidEmail(string email)
     {

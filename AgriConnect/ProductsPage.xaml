@@ -81,8 +81,7 @@
         <!-- Product List -->
         <CollectionView Grid.Row="2" 
                         ItemsSource="{Binding FilteredProducts}"
-                        SelectionMode="Single"
-                        SelectionChanged="OnSelectionChanged"
+                        SelectionMode="None"
                         Margin="20">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
@@ -95,6 +94,9 @@
                            BorderColor="Transparent"
                            BackgroundColor="White"
                            HeightRequest="200">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProductTapped" CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
                         <Grid RowDefinitions="*,Auto">
                             <Image Grid.Row="0" 
                                    Source="{Binding Image}" 
@@ -158,7 +160,7 @@
                 </Frame>
             </Grid>
 
-            <ImageButton Grid.Column="3" Source="profile_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center">
+            <ImageButton Grid.Column="3" Source="profile_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Clicked="OnProfileClicked">
                  <ImageButton.Source>
                     <FontImageSource Glyph="&#x1F464;" Color="#00C853" Size="24" />
                 </ImageButton.Source>

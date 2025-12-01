@@ -15,7 +15,7 @@
     <Grid RowDefinitions="Auto,*,Auto">
 
         <!-- Header -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto,*" Padding="20" BackgroundColor="White">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="20" BackgroundColor="White">
             <ImageButton Source="back_icon.png"
                          BackgroundColor="#00C853"
                          CornerRadius="8"
@@ -35,6 +35,26 @@
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
                    Margin="-40,0,0,0"/>
+
+            <Frame Grid.Column="2"
+                   CornerRadius="20"
+                   HeightRequest="40"
+                   WidthRequest="40"
+                   Padding="0"
+                   BackgroundColor="White"
+                   HasShadow="True"
+                   HorizontalOptions="End">
+                <ImageButton Source="menu_icon.png"
+                             Clicked="OnMenuClicked"
+                             HeightRequest="20"
+                             WidthRequest="20"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center">
+                    <ImageButton.Source>
+                        <FontImageSource Glyph="&#x2630;" Color="Black" Size="20" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </Frame>
         </Grid>
 
         <!-- Content -->

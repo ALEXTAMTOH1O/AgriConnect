@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgriConnect.ProfilePage"
+             Title="Mon Profil"
+             BackgroundColor="White">
+
+    <Shell.TitleView>
+        <Label Text="Mon Profil"
+               TextColor="White"
+               FontSize="20"
+               FontAttributes="Bold"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Profile Image -->
+            <Frame HeightRequest="100" 
+                   WidthRequest="100" 
+                   CornerRadius="50" 
+                   Padding="0" 
+                   IsClippedToBounds="True" 
+                   HorizontalOptions="Center"
+                   BorderColor="#8BC34A">
+                <Image Source="profile_placeholder.png" 
+                       Aspect="AspectFill" />
+            </Frame>
+            
+            <Button Text="Changer la photo"
+                    TextColor="#8BC34A"
+                    BackgroundColor="Transparent"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    Clicked="OnChangePhotoClicked"/>
+
+            <!-- Form Fields -->
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Nom complet" TextColor="Gray" FontSize="12"/>
+                <Entry Placeholder="Votre nom" Text="ALEX" />
+                
+                <Label Text="Email" TextColor="Gray" FontSize="12"/>
+                <Entry Placeholder="Votre email" Text="alex@example.com" Keyboard="Email" />
+                
+                <Label Text="Téléphone" TextColor="Gray" FontSize="12"/>
+                <Entry Placeholder="Votre numéro" Text="+237 600 000 000" Keyboard="Telephone" />
+                
+                <Label Text="Localisation" TextColor="Gray" FontSize="12"/>
+                <Entry Placeholder="Votre ville" Text="DOUALA" />
+            </VerticalStackLayout>
+
+            <!-- Save Button -->
+            <Button Text="Enregistrer les modifications"
+                    BackgroundColor="#8BC34A"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    Margin="0,20,0,0"
+                    Clicked="OnSaveClicked"/>
+            
+            <!-- Logout Button -->
+             <Button Text="Se déconnecter"
+                    BackgroundColor="#FF5252"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    Clicked="OnLogoutClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

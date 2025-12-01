@@ -70,4 +70,8 @@ public partial class ProductDetailsPage : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(ChatListPage));
     }
+    private async void OnMenuClicked(object sender, EventArgs e)
+    {
+        await DisplayActionSheet("Menu", "Annuler", null, "Partager", "Signaler");
+    }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgriConnect.AddProductPage"
+             Title="Nouvelle Annonce"
+             BackgroundColor="White">
+
+    <Shell.TitleView>
+        <Label Text="Nouvelle Annonce"
+               TextColor="White"
+               FontSize="20"
+               FontAttributes="Bold"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Image Placeholder -->
+            <Frame HeightRequest="150" 
+                   WidthRequest="150" 
+                   CornerRadius="10" 
+                   BackgroundColor="#F5F5F5" 
+                   HasShadow="False"
+                   HorizontalOptions="Center">
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5">
+                    <ImageButton Source="plus_icon.png" 
+                                 HeightRequest="40" 
+                                 WidthRequest="40"
+                                 Clicked="OnAddImageClicked">
+                         <ImageButton.Source>
+                            <FontImageSource Glyph="+" Color="#8BC34A" Size="40" />
+                        </ImageButton.Source>
+                    </ImageButton>
+                    <Label Text="Ajouter des photos" TextColor="Gray" FontSize="12"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Form Fields -->
+            <Entry Placeholder="Nom du produit" />
+            
+            <Editor Placeholder="Description (facultatif)" HeightRequest="100" />
+            
+            <Entry Placeholder="Prix unitaire (XAF)" Keyboard="Numeric" />
+            
+            <Entry Placeholder="Quantité disponible" Keyboard="Numeric" />
+            
+            <Entry Placeholder="Unité (ex: kg, botte)" />
+
+            <Button Text="Utiliser ma position actuelle"
+                    BackgroundColor="#E0E0E0"
+                    TextColor="Gray"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    Margin="0,10,0,0"/>
+
+            <!-- Submit Button -->
+            <Button Text="Publier l'annonce"
+                    BackgroundColor="#8BC34A"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    Margin="0,20,0,0"
+                    Clicked="OnPublishClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

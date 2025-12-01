@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:Converters="clr-namespace:AgriConnect.Converters"
+             x:Class="AgriConnect.FarmerDashboardPage"
+             Title="Mes Annonces"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- Header -->
+        <Grid Grid.Row="0" BackgroundColor="#8BC34A" HeightRequest="100" Padding="20">
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label Text="AgriConnect" 
+                       TextColor="White" 
+                       FontSize="24" 
+                       FontAttributes="Bold" />
+                <Label Text="Mes Annonces" 
+                       TextColor="White" 
+                       FontSize="18" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Add Button -->
+        <Grid Grid.Row="1" Padding="20">
+            <Button Text="+ Ajouter une nouvelle annonce"
+                    BackgroundColor="#8BC34A"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    Clicked="OnAddProductClicked"/>
+        </Grid>
+
+        <!-- Product List -->
+        <CollectionView Grid.Row="2" 
+                        ItemsSource="{Binding MyProducts}"
+                        SelectionMode="None"
+                        Margin="20">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="15" 
+                           Padding="0" 
+                           HasShadow="True" 
+                           BorderColor="Transparent"
+                           BackgroundColor="White"
+                           HeightRequest="120">
+                        <Grid ColumnDefinitions="120,*">
+                            <Image Grid.Column="0" 
+                                   Source="{Binding Image}" 
+                                   Aspect="AspectFill"
+                                   HeightRequest="120"
+                                   WidthRequest="120"
+                                   VerticalOptions="Start" />
+                            
+                            <VerticalStackLayout Grid.Column="1" Padding="10" Spacing="5" VerticalOptions="Center">
+                                <Label Text="{Binding Name}" 
+                                       FontSize="16" 
+                                       FontAttributes="Bold" 
+                                       TextColor="Black" />
+                                <Label Text="{Binding Price}" 
+                                       FontSize="14" 
+                                       TextColor="Gray" />
+                                <Label Text="{Binding QuantityText}" 
+                                       FontSize="12" 
+                                       TextColor="Gray" />
+                                <Label Text="{Binding Price}" 
+                                       FontSize="16" 
+                                       TextColor="Black" 
+                                       FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Bottom Navigation -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" HeightRequest="60" BackgroundColor="White">
+            <BoxView Grid.ColumnSpan="4" HeightRequest="1" Color="#E0E0E0" VerticalOptions="Start" />
+            
+            <VerticalStackLayout Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <ImageButton Source="home_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center">
+                     <ImageButton.Source>
+                        <FontImageSource Glyph="&#x1F3E0;" Color="#8BC34A" Size="24" />
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Accueil" FontSize="10" TextColor="#8BC34A" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <ImageButton Source="chat_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Clicked="OnChatClicked">
+                     <ImageButton.Source>
+                        <FontImageSource Glyph="&#x1F4AC;" Color="Gray" Size="24" />
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Messages" FontSize="10" TextColor="Gray" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+            
+            <VerticalStackLayout Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                <ImageButton Source="cart_icon.png" HeightRequest="24" WidthRequest="24" Clicked="OnOrdersClicked">
+                     <ImageButton.Source>
+                        <FontImageSource Glyph="&#x1F6D2;" Color="Gray" Size="24" />
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Mes Commandes" FontSize="10" TextColor="Gray" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center">
+                <ImageButton Source="profile_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Clicked="OnProfileClicked">
+                     <ImageButton.Source>
+                        <FontImageSource Glyph="&#x1F464;" Color="Gray" Size="24" />
+                    </ImageButton.Source>
+                </ImageButton>
+                <Label Text="Profil" FontSize="10" TextColor="Gray" HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
+</ContentPage>

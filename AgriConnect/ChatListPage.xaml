@@ -100,7 +100,7 @@
                 </ImageButton.Source>
             </ImageButton>
 
-            <ImageButton Grid.Column="3" Source="profile_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center">
+            <ImageButton Grid.Column="3" Source="profile_icon.png" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" Clicked="OnProfileClicked">
                  <ImageButton.Source>
                     <FontImageSource Glyph="&#x1F464;" Color="#00C853" Size="24" />
                 </ImageButton.Source>
