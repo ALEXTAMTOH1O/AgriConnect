@@ -1,12 +1,6 @@
 using Microsoft.Maui.Controls;
 using System;
-
-namespace AgriConnect
-{
-    public partial class RoleSelectionPage : ContentPage
-using Microsoft.Maui.Controls;
-using System;
-using Microsoft.Maui.Storage; // Added for Preferences
+using Microsoft.Maui.Storage;
 
 namespace AgriConnect
 {

@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using Microsoft.Maui.Storage;
 
 namespace AgriConnect;
 
@@ -6,7 +7,7 @@ public partial class LoginPage : ContentPage
 {
 	public LoginPage()
 	{
-		InitializeComponent(); // Rebuild trigger
+		InitializeComponent();
 	}
 
     private async void OnBackClicked(object sender, EventArgs e)
@@ -35,6 +36,25 @@ public partial class LoginPage : ContentPage
         if (string.IsNullOrWhiteSpace(password))
         {
             await DisplayAlert("Erreur", "Veuillez entrer votre mot de passe.", "OK");
+            return;
+        }
+
+        // Navigate based on role
+        string role = Preferences.Get("UserRole", "Buyer");
+        if (role == "Farmer")
+        {
+            await Shell.Current.GoToAsync("///FarmerDashboardPage");
+        }
+        else
+        {
+            await Shell.Current.GoToAsync("///ProductsPage");
+        }
+    }
+
+    private async void OnForgotPasswordTapped(object sender, TappedEventArgs e)
+    {
+        await DisplayAlert("Info", "Fonctionnalité de récupération de mot de passe à venir.", "OK");
+    }
 
     private bool IsValidEmail(string email)
     {
