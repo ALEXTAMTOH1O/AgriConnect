@@ -11,13 +11,13 @@ namespace AgriConnect
             InitializeComponent();
         }
 
-        private async void OnBuyerClicked(object sender, EventArgs e)
+        private async void OnAcheteurTapped(object sender, EventArgs e)
         {
             Preferences.Set("UserRole", "Buyer");
             await Shell.Current.GoToAsync(nameof(LoginPage));
         }
 
-        private async void OnFarmerClicked(object sender, EventArgs e)
+        private async void OnAgriculteurTapped(object sender, EventArgs e)
         {
             Preferences.Set("UserRole", "Farmer");
             await Shell.Current.GoToAsync(nameof(LoginPage));
